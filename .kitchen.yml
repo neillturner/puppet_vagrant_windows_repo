@@ -1,0 +1,27 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: mwrock/Windows2016
+    driver_plugin: vagrant
+transport:
+  name: winrm
+  winrm_username: vagrant
+  winrm_password: vagrant
+
+provisioner:
+  name: puppet_apply
+  platform: windows
+  sudo: false
+  manifests_path:  manifests
+  modules_path: modules_mycompany
+  hiera_data_path: hieradata
+  require_puppet_repo: true
+  require_chef_for_busser: false
+  puppet_debug: true
+  puppet_verbose: true
+
+suites:
+  - name: base
+
